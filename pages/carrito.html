@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Carrito - LibroNet</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/carrito.css">
+</head>
+<body>
+    <!-- Navbar modificado para usuario logueado -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">LibroNet</div>
+            <div class="nav-buttons">
+                <span style="color: white; margin-right: 1rem;">¡Bienvenido, Usuario!</span>
+                <a href="../index.html" class="btn btn-outline">Volver al Inicio</a>
+                <a href="#" class="btn btn-primary">Mi Cuenta</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal del carrito -->
+    <div class="carrito-container">
+        <div class="carrito-header">
+            <h1>Mi Carrito de Compras</h1>
+            <p>Revisa tus productos seleccionados antes de proceder al pago</p>
+        </div>
+
+        <div class="carrito-content">
+            <!-- Lista de productos en el carrito -->
+            <div class="productos-carrito">
+                <h2>Productos en tu carrito (4 artículos)</h2>
+                
+                <div class="producto-carrito">
+                    <div class="producto-imagen">📖</div>
+                    <div class="producto-info">
+                        <div class="producto-titulo">Cien Años de Soledad</div>
+                        <div class="producto-precio">$15.99</div>
+                    </div>
+                    <div class="producto-cantidad">
+                        <button class="cantidad-btn" onclick="cambiarCantidad(this, -1)">-</button>
+                        <input type="number" class="cantidad-input" value="1" min="1">
+                        <button class="cantidad-btn" onclick="cambiarCantidad(this, 1)">+</button>
+                    </div>
+                    <button class="producto-eliminar" onclick="eliminarProducto(this)">Eliminar</button>
+                </div>
+
+                <div class="producto-carrito">
+                    <div class="producto-imagen">📘</div>
+                    <div class="producto-info">
+                        <div class="producto-titulo">1984</div>
+                        <div class="producto-precio">$12.50</div>
+                    </div>
+                    <div class="producto-cantidad">
+                        <button class="cantidad-btn" onclick="cambiarCantidad(this, -1)">-</button>
+                        <input type="number" class="cantidad-input" value="2" min="1">
+                        <button class="cantidad-btn" onclick="cambiarCantidad(this, 1)">+</button>
+                    </div>
+                    <button class="producto-eliminar" onclick="eliminarProducto(this)">Eliminar</button>
+                </div>
+
+                <div class="producto-carrito">
+                    <div class="producto-imagen">📙</div>
+                    <div class="producto-info">
+                        <div class="producto-titulo">Harry Potter y la Piedra Filosofal</div>
+                        <div class="producto-precio">$18.75</div>
+                    </div>
+                    <div class="producto-cantidad">
+                        <button class="cantidad-btn" onclick="cambiarCantidad(this, -1)">-</button>
+                        <input type="number" class="cantidad-input" value="1" min="1">
+                        <button class="cantidad-btn" onclick="cambiarCantidad(this, 1)">+</button>
+                    </div>
+                    <button class="producto-eliminar" onclick="eliminarProducto(this)">Eliminar</button>
+                </div>
+
+                <div class="producto-carrito">
+                    <div class="producto-imagen">📓</div>
+                    <div class="producto-info">
+                        <div class="producto-titulo">El Principito</div>
+                        <div class="producto-precio">$9.99</div>
+                    </div>
+                    <div class="producto-cantidad">
+                        <button class="cantidad-btn" onclick="cambiarCantidad(this, -1)">-</button>
+                        <input type="number" class="cantidad-input" value="3" min="1">
+                        <button class="cantidad-btn" onclick="cambiarCantidad(this, 1)">+</button>
+                    </div>
+                    <button class="producto-eliminar" onclick="eliminarProducto(this)">Eliminar</button>
+                </div>
+            </div>
+
+            <!-- Resumen del carrito -->
+            <div class="resumen-carrito">
+                <h3>Resumen del Pedido</h3>
+                
+                <div class="resumen-linea">
+                    <span>Subtotal (7 artículos):</span>
+                    <span id="subtotal">$87.22</span>
+                </div>
+                
+                <div class="resumen-linea">
+                    <span>Envío:</span>
+                    <span>$5.99</span>
+                </div>
+                
+                <div class="resumen-linea">
+                    <span>Descuento:</span>
+                    <span style="color: #28a745;">-$8.72</span>
+                </div>
+                
+                <div class="resumen-linea total">
+                    <span>Total:</span>
+                    <span id="total">$84.49</span>
+                </div>
+                
+                <button class="btn-checkout" onclick="procederPago()">
+                    Proceder al Pago 🛒
+                </button>
+                
+                <div style="margin-top: 1rem; text-align: center;">
+                    <small style="color: #666;">Pago seguro con SSL</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones adicionales -->
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="../index.html" class="btn btn-outline" style="margin-right: 1rem;">Seguir Comprando</a>
+            <button class="btn btn-primary" onclick="vaciarCarrito()">Vaciar Carrito</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>LibroNet</h4>
+                <p>Tu librería online de confianza. Comprometidos con el medio ambiente y la accesibilidad al conocimiento.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <p><a href="#catalogo">Catálogo</a></p>
+                <p><a href="#">Ofertas</a></p>
+                <p><a href="#">Nuevos Lanzamientos</a></p>
+                <p><a href="#">Contacto</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Atención al Cliente</h4>
+                <p><a href="#">Preguntas Frecuentes</a></p>
+                <p><a href="#">Política de Devoluciones</a></p>
+                <p><a href="#">Envíos</a></p>
+                <p><a href="#">Soporte</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Twitter</a></p>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Newsletter</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LibroNet. Todos los derechos reservados. | Compromiso con el medio ambiente - 50% menos papel.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Funciones JavaScript para interactividad del carrito
+        function cambiarCantidad(btn, cambio) {
+            const input = btn.parentNode.querySelector('.cantidad-input');
+            let cantidad = parseInt(input.value) + cambio;
+            if (cantidad < 1) cantidad = 1;
+            input.value = cantidad;
+            actualizarTotal();
+        }
+
+        function eliminarProducto(btn) {
+            const producto = btn.closest('.producto-carrito');
+            producto.style.animation = 'fadeOut 0.3s ease';
+            setTimeout(() => {
+                producto.remove();
+                actualizarTotal();
+                verificarCarritoVacio();
+            }, 300);
+        }
+
+        function actualizarTotal() {
+            let subtotal = 0;
+            const productos = document.querySelectorAll('.producto-carrito');
+            
+            productos.forEach(producto => {
+                const precio = parseFloat(producto.querySelector('.producto-precio').textContent.replace('$', ''));
+                const cantidad = parseInt(producto.querySelector('.cantidad-input').value);
+                subtotal += precio * cantidad;
+            });
+
+            const envio = 5.99;
+            const descuento = subtotal * 0.1; // 10% de descuento
+            const total = subtotal + envio - descuento;
+
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+        }
+
+        function verificarCarritoVacio() {
+            const productos = document.querySelectorAll('.producto-carrito');
+            if (productos.length === 0) {
+                const carritoContent = document.querySelector('.carrito-content');
+                carritoContent.innerHTML = `
+                    <div class="carrito-vacio">
+                        <div class="carrito-vacio-icon">🛒</div>
+                        <h2>Tu carrito está vacío</h2>
+                        <p>¡Explora nuestro catálogo y encuentra tu próximo libro favorito!</p>
+                        <a href="../index.html" class="btn btn-primary">Ir al Catálogo</a>
+                    </div>
+                `;
+            }
+        }
+
+        function vaciarCarrito() {
+            if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
+                const productos = document.querySelectorAll('.producto-carrito');
+                productos.forEach(producto => producto.remove());
+                verificarCarritoVacio();
+            }
+        }
+
+        function procederPago() {
+            alert('Redirigiendo a la página de pago... (Esta funcionalidad se implementará próximamente)');
+        }
+
+        // Estilo para animación de eliminación
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                from { opacity: 1; transform: translateX(0); }
+                to { opacity: 0; transform: translateX(-100%); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
