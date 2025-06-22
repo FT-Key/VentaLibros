@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibroNet - Venta de Libros Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo::before {
+            content: "📚";
+            margin-right: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-hero {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Catálogo Section */
+        .catalogo {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .catalogo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .catalogo h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .catalogo-content {
+            display: flex;
+            gap: 2rem;
+            min-height: 600px;
+        }
+
+        /* Panel Izquierdo - Lista de libros */
+        .libros-panel {
+            width: 25%;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .search-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .libros-lista {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .libro-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .libro-item:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+        }
+
+        .libro-item.selected {
+            border-color: #667eea;
+            background: #e3f2fd;
+        }
+
+        .libro-imagen {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 6px;
+            margin-right: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .libro-titulo {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #333;
+            line-height: 1.3;
+        }
+
+        /* Panel Derecho - Detalles del libro */
+        .detalles-panel {
+            width: 75%;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .libro-detalle {
+            display: none;
+        }
+
+        .libro-detalle.active {
+            display: block;
+        }
+
+        .detalle-header {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .detalle-imagen {
+            width: 150px;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .detalle-info h3 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .detalle-autor {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .detalle-precio {
+            font-size: 1.5rem;
+            color: #28a745;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .btn-comprar {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-comprar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .detalle-descripcion {
+            margin-top: 2rem;
+        }
+
+        .detalle-descripcion h4 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .detalle-descripcion p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .estado-inicial {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-top: 3rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 80px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .catalogo-content {
+                flex-direction: column;
+            }
+
+            .libros-panel,
+            .detalles-panel {
+                width: 100%;
+            }
+
+            .detalle-header {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">LibroNet</div>
+            <div class="nav-buttons">
+                <a href="#" class="btn btn-outline">Iniciar Sesión</a>
+                <a href="./register.html" class="btn btn-primary">Registrarse</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Venta de Libros</h1>
+            <p>Descubre un mundo de conocimiento al alcance de tus manos. Miles de títulos esperando por ti con envío directo a tu hogar.</p>
+            <a href="#catalogo" class="btn-hero">Nuestro Catálogo</a>
+        </div>
+    </section>
+
+    <!-- Sección Catálogo -->
+    <section id="catalogo" class="catalogo">
+        <div class="catalogo-container">
+            <h2>Catálogo de Libros</h2>
+            <div class="catalogo-content">
+                <!-- Panel Izquierdo - Lista de libros -->
+                <div class="libros-panel">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Buscar libros..." id="searchInput">
+                    </div>
+                    <div class="libros-lista" id="librosLista">
+                        <div class="libro-item" data-libro="1">
+                            <div class="libro-imagen">📖</div>
+                            <div class="libro-titulo">Cien Años de Soledad</div>
+                        </div>
+                        <div class="libro-item" data-libro="2">
+                            <div class="libro-imagen">📚</div>
+                            <div class="libro-titulo">Don Quijote de la Mancha</div>
+                        </div>
+                        <div class="libro-item" data-libro="3">
+                            <div class="libro-imagen">📓</div>
+                            <div class="libro-titulo">El Principito</div>
+                        </div>
+                        <div class="libro-item" data-libro="4">
+                            <div class="libro-imagen">📘</div>
+                            <div class="libro-titulo">1984</div>
+                        </div>
+                        <div class="libro-item" data-libro="5">
+                            <div class="libro-imagen">📗</div>
+                            <div class="libro-titulo">Orgullo y Prejuicio</div>
+                        </div>
+                        <div class="libro-item" data-libro="6">
+                            <div class="libro-imagen">📙</div>
+                            <div class="libro-titulo">Harry Potter y la Piedra Filosofal</div>
+                        </div>
+                        <div class="libro-item" data-libro="7">
+                            <div class="libro-imagen">📕</div>
+                            <div class="libro-titulo">El Señor de los Anillos</div>
+                        </div>
+                        <div class="libro-item" data-libro="8">
+                            <div class="libro-imagen">📔</div>
+                            <div class="libro-titulo">Crónica de una Muerte Anunciada</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel Derecho - Detalles del libro -->
+                <div class="detalles-panel">
+                    <div class="estado-inicial">
+                        <p>Selecciona un libro del catálogo para ver sus detalles</p>
+                    </div>
+
+                    <!-- Detalles de cada libro -->
+                    <div class="libro-detalle" data-detalle="1">
+                        <div class="detalle-header">
+                            <div class="detalle-imagen">📖</div>
+                            <div class="detalle-info">
+                                <h3>Cien Años de Soledad</h3>
+                                <div class="detalle-autor">Gabriel García Márquez</div>
+                                <div class="detalle-precio">$25.99</div>
+                                <button class="btn-comprar">Agregar al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="detalle-descripcion">
+                            <h4>Descripción</h4>
+                            <p>Una obra maestra del realismo mágico que narra la historia de la familia Buendía a lo largo de siete generaciones en el pueblo ficticio de Macondo. Esta novela épica explora temas universales como el amor, la soledad, la guerra y el destino, convirtiéndose en una de las obras más importantes de la literatura latinoamericana.</p>
+                        </div>
+                    </div>
+
+                    <div class="libro-detalle" data-detalle="2">
+                        <div class="detalle-header">
+                            <div class="detalle-imagen">📚</div>
+                            <div class="detalle-info">
+                                <h3>Don Quijote de la Mancha</h3>
+                                <div class="detalle-autor">Miguel de Cervantes</div>
+                                <div class="detalle-precio">$22.50</div>
+                                <button class="btn-comprar">Agregar al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="detalle-descripcion">
+                            <h4>Descripción</h4>
+                            <p>Considerada la primera novela moderna, esta obra maestra de Cervantes narra las aventuras de Alonso Quixano, quien enloquecido por los libros de caballerías se convierte en Don Quijote. Acompañado de su fiel escudero Sancho Panza, emprende aventuras que mezclan la realidad con la fantasía.</p>
+                        </div>
+                    </div>
+
+                    <div class="libro-detalle" data-detalle="3">
+                        <div class="detalle-header">
+                            <div class="detalle-imagen">📓</div>
+                            <div class="detalle-info">
+                                <h3>El Principito</h3>
+                                <div class="detalle-autor">Antoine de Saint-Exupéry</div>
+                                <div class="detalle-precio">$15.99</div>
+                                <button class="btn-comprar">Agregar al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="detalle-descripcion">
+                            <h4>Descripción</h4>
+                            <p>Una hermosa fábula sobre la amistad, el amor y la pérdida de la inocencia. A través de los ojos de un pequeño príncipe que viaja por diferentes planetas, Saint-Exupéry nos enseña sobre los valores humanos más importantes y la importancia de ver con el corazón.</p>
+                        </div>
+                    </div>
+
+                    <div class="libro-detalle" data-detalle="4">
+                        <div class="detalle-header">
+                            <div class="detalle-imagen">📘</div>
+                            <div class="detalle-info">
+                                <h3>1984</h3>
+                                <div class="detalle-autor">George Orwell</div>
+                                <div class="detalle-precio">$19.99</div>
+                                <button class="btn-comprar">Agregar al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="detalle-descripcion">
+                            <h4>Descripción</h4>
+                            <p>Una distopía que presenta un futuro totalitario donde el gobierno controla cada aspecto de la vida. Winston Smith lucha por mantener su individualidad en un mundo donde el Gran Hermano lo ve todo. Una reflexión profunda sobre el poder, la libertad y la manipulación.</p>
+                        </div>
+                    </div>
+
+                    <div class="libro-detalle" data-detalle="5">
+                        <div class="detalle-header">
+                            <div class="detalle-imagen">📗</div>
+                            <div class="detalle-info">
+                                <h3>Orgullo y Prejuicio</h3>
+                                <div class="detalle-autor">Jane Austen</div>
+                                <div class="detalle-precio">$18.75</div>
+                                <button class="btn-comprar">Agregar al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="detalle-descripcion">
+                            <h4>Descripción</h4>
+                            <p>Una elegante novela romántica que explora las complejidades del amor, la clase social y los prejuicios en la Inglaterra del siglo XIX. La historia de Elizabeth Bennet y Mr. Darcy se ha convertido en un clásico atemporal sobre primeras impresiones y segundas oportunidades.</p>
+                        </div>
+                    </div>
+
+                    <div class="libro-detalle" data-detalle="6">
+                        <div class="detalle-header">
+                            <div class="detalle-imagen">📙</div>
+                            <div class="detalle-info">
+                                <h3>Harry Potter y la Piedra Filosofal</h3>
+                                <div class="detalle-autor">J.K. Rowling</div>
+                                <div class="detalle-precio">$21.99</div>
+                                <button class="btn-comprar">Agregar al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="detalle-descripcion">
+                            <h4>Descripción</h4>
+                            <p>El primer libro de la saga que conquistó al mundo. Harry Potter descubre en su undécimo cumpleaños que es un mago y es invitado a estudiar en Hogwarts. Una historia mágica sobre la amistad, el valor y la lucha entre el bien y el mal que ha encantado a millones de lectores.</p>
+                        </div>
+                    </div>
+
+                    <div class="libro-detalle" data-detalle="7">
+                        <div class="detalle-header">
+                            <div class="detalle-imagen">📕</div>
+                            <div class="detalle-info">
+                                <h3>El Señor de los Anillos</h3>
+                                <div class="detalle-autor">J.R.R. Tolkien</div>
+                                <div class="detalle-precio">$35.99</div>
+                                <button class="btn-comprar">Agregar al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="detalle-descripcion">
+                            <h4>Descripción</h4>
+                            <p>Una épica fantasía que sigue la aventura de Frodo Bolsón y la Comunidad del Anillo en su misión para destruir el Anillo Único. Tolkien creó un mundo rico y detallado lleno de criaturas mágicas, lenguas inventadas y una mitología compleja que ha influenciado toda la literatura fantástica posterior.</p>
+                        </div>
+                    </div>
+
+                    <div class="libro-detalle" data-detalle="8">
+                        <div class="detalle-header">
+                            <div class="detalle-imagen">📔</div>
+                            <div class="detalle-info">
+                                <h3>Crónica de una Muerte Anunciada</h3>
+                                <div class="detalle-autor">Gabriel García Márquez</div>
+                                <div class="detalle-precio">$17.50</div>
+                                <button class="btn-comprar">Agregar al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="detalle-descripcion">
+                            <h4>Descripción</h4>
+                            <p>Una novela corta que reconstruye la historia de un asesinato anunciado desde el primer párrafo. García Márquez explora temas como el honor, la fatalidad y la responsabilidad colectiva en una narrativa que mezcla el periodismo con la literatura en una historia inolvidable.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>LibroNet</h4>
+                <p>Tu librería online de confianza. Comprometidos con el medio ambiente y la accesibilidad al conocimiento.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <p><a href="#catalogo">Catálogo</a></p>
+                <p><a href="#">Ofertas</a></p>
+                <p><a href="#">Nuevos Lanzamientos</a></p>
+                <p><a href="#">Contacto</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Atención al Cliente</h4>
+                <p><a href="#">Preguntas Frecuentes</a></p>
+                <p><a href="#">Política de Devoluciones</a></p>
+                <p><a href="#">Envíos</a></p>
+                <p><a href="#">Soporte</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Twitter</a></p>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Newsletter</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LibroNet. Todos los derechos reservados. | Compromiso con el medio ambiente - 50% menos papel.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Funcionalidad del catálogo
+        document.addEventListener('DOMContentLoaded', function() {
+            const librosItems = document.querySelectorAll('.libro-item');
+            const librosDetalles = document.querySelectorAll('.libro-detalle');
+            const estadoInicial = document.querySelector('.estado-inicial');
+            const searchInput = document.getElementById('searchInput');
+
+            // Función para mostrar detalles del libro
+            function mostrarDetalle(libroId) {
+                // Ocultar estado inicial
+                estadoInicial.style.display = 'none';
+                
+                // Ocultar todos los detalles
+                librosDetalles.forEach(detalle => {
+                    detalle.classList.remove('active');
+                });
+                
+                // Mostrar el detalle seleccionado
+                const detalleSeleccionado = document.querySelector(`[data-detalle="${libroId}"]`);
+                if (detalleSeleccionado) {
+                    detalleSeleccionado.classList.add('active');
+                }
+                
+                // Actualizar estado visual de la lista
+                librosItems.forEach(item => {
+                    item.classList.remove('selected');
+                });
+                
+                const itemSeleccionado = document.querySelector(`[data-libro="${libroId}"]`);
+                if (itemSeleccionado) {
+                    itemSeleccionado.classList.add('selected');
+                }
+            }
+
+            // Event listeners para los items de libros
+            librosItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const libroId = this.getAttribute('data-libro');
+                    mostrarDetalle(libroId);
+                });
+            });
+
+            // Funcionalidad de búsqueda
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                librosItems.forEach(item => {
+                    const titulo = item.querySelector('.libro-titulo').textContent.toLowerCase();
+                    if (titulo.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+
+            // Smooth scroll para el botón del hero
+            document.querySelector('.btn-hero').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('catalogo').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+
+            // Funcionalidad de los botones de compra
+            document.querySelectorAll('.btn-comprar').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('Funcionalidad de compra - En desarrollo para el prototipo');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
