@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - LibroNet</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">LibroNet</div>
+            <div class="nav-buttons">
+                <a href="./register.html" class="btn btn-outline">Registrarse</a>
+                <a href="../index.html" class="btn btn-primary">Volver al Inicio</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="login-icon">👤</div>
+                    <h1>Bienvenido</h1>
+                    <p>Ingresa a tu cuenta de LibroNet</p>
+                </div>
+
+                <div id="errorMessage" class="error-message"></div>
+                <div id="successMessage" class="success-message"></div>
+
+                <form id="loginForm" novalidate>
+                    <div class="form-group">
+                        <label for="usuario" class="form-label">Usuario o Email</label>
+                        <input type="text" id="usuario" name="usuario" class="form-input" required
+                            placeholder="Ingrese su usuario o email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <div class="password-container">
+                            <input type="password" id="password" name="password" class="form-input" required
+                                placeholder="Ingrese su contraseña">
+                            <button type="button" class="password-toggle" id="passwordToggle">👁️</button>
+                        </div>
+                        <div class="forgot-password">
+                            <a href="#">¿Olvidaste tu contraseña?</a>
+                        </div>
+                    </div>
+
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Recordarme</label>
+                    </div>
+
+                    <button type="submit" class="btn-login" id="loginBtn">Iniciar Sesión</button>
+                </form>
+
+                <div class="divider">
+                    <span>o</span>
+                </div>
+
+                <div class="register-link">
+                    <p>¿No tienes una cuenta? <a href="register.html">Crear cuenta nueva</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>LibroNet</h4>
+                <p>Tu librería online de confianza. Comprometidos con el medio ambiente y la accesibilidad al
+                    conocimiento.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <p><a href="#catalogo">Catálogo</a></p>
+                <p><a href="#">Ofertas</a></p>
+                <p><a href="#">Nuevos Lanzamientos</a></p>
+                <p><a href="#">Contacto</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Atención al Cliente</h4>
+                <p><a href="#">Preguntas Frecuentes</a></p>
+                <p><a href="#">Política de Devoluciones</a></p>
+                <p><a href="#">Envíos</a></p>
+                <p><a href="#">Soporte</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Twitter</a></p>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Newsletter</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LibroNet. Todos los derechos reservados. | Compromiso con el medio ambiente - 50% menos
+                papel.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle password visibility
+        document.getElementById('passwordToggle').addEventListener('click', function () {
+            const passwordInput = document.getElementById('password');
+            const toggleBtn = this;
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = '👁️';
+            }
+        });
+
+        // Form validation and submission
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const usuario = document.getElementById('usuario').value.trim();
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            const loginBtn = document.getElementById('loginBtn');
+
+            // Hide previous messages
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            // Basic validation
+            if (!usuario || !password) {
+                showError('Por favor, complete todos los campos.');
+                return;
+            }
+
+            if (password.length < 6) {
+                showError('La contraseña debe tener al menos 6 caracteres.');
+                return;
+            }
+
+            // Simulate login process
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Iniciando sesión...';
+
+            // Simulate API call delay
+            setTimeout(() => {
+                // Here you would normally make an API call to authenticate
+                // For demo purposes, we'll simulate a successful login
+
+                if (usuario === 'demo' && password === 'demo123') {
+                    showSuccess('¡Inicio de sesión exitoso! Redirigiendo...');
+                    setTimeout(() => {
+                        window.location.href = 'Libreria.html';
+                    }, 2000);
+                } else {
+                    showError('Usuario o contraseña incorrectos. (Prueba: demo / demo123)');
+                    loginBtn.disabled = false;
+                    loginBtn.textContent = 'Iniciar Sesión';
+                }
+            }, 1500);
+        });
+
+        function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+        }
+
+        function showSuccess(message) {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+        }
+
+        // Real-time validation feedback
+        document.getElementById('usuario').addEventListener('input', function () {
+            if (this.value.trim().length > 0) {
+                this.style.borderColor = '#28a745';
+            } else {
+                this.style.borderColor = '#e9ecef';
+            }
+        });
+
+        document.getElementById('password').addEventListener('input', function () {
+            if (this.value.length >= 6) {
+                this.style.borderColor = '#28a745';
+            } else if (this.value.length > 0) {
+                this.style.borderColor = '#ffc107';
+            } else {
+                this.style.borderColor = '#e9ecef';
+            }
+        });
+
+        // Enter key support
+        document.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && e.target.matches('#usuario, #password')) {
+                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            }
+        });
+    </script>
+</body>
+
+</html>
