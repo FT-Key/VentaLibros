@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuenta Suspendida - LibroNet</title>
+  <link rel="stylesheet" href="../css/general.css">
+  <link rel="stylesheet" href="../css/suspended.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">LibroNet</div>
+      <div class="nav-buttons">
+        <a href="../index.html" class="btn btn-primary">Inicio</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="suspension-container">
+    <div class="suspension-card">
+      <div class="suspension-icon">⏰</div>
+      <h1 class="suspension-title">Cuenta Suspendida por Inactividad</h1>
+      <p class="suspension-subtitle">Tu cuenta ha sido temporalmente suspendida debido a un período prolongado de
+        inactividad</p>
+
+      <div class="info-section">
+        <div class="info-title">
+          📋 ¿Por qué se suspendió mi cuenta?
+        </div>
+        <ul class="info-list">
+          <li>No has iniciado sesión en los últimos 10 meses</li>
+          <li>Por políticas de seguridad, las cuentas inactivas se suspenden automáticamente</li>
+          <li>Esto ayuda a proteger tu información personal y mantener nuestros sistemas seguros</li>
+          <li>Tu historial de compras y datos permanecen seguros en nuestros servidores</li>
+        </ul>
+      </div>
+
+      <div class="timer-section">
+        <div class="timer-icon">⏳</div>
+        <div class="timer-text">Fecha de suspensión: 15 de Junio, 2025</div>
+        <div class="timer-subtext">Último acceso: 10 de Junio, 2024</div>
+      </div>
+
+      <div class="reactivation-section">
+        <div class="reactivation-icon">🔄</div>
+        <div class="reactivation-title">¡Reactivar mi cuenta es fácil!</div>
+        <p>Confirma tus datos y recupera el acceso a tu biblioteca digital</p>
+
+        <div class="reactivation-form">
+          <div class="form-group-inline">
+            <input type="email" class="form-input-white" placeholder="Tu email registrado" id="emailReactivacion">
+          </div>
+          <div class="form-group-inline">
+            <input type="text" class="form-input-white" placeholder="Número de teléfono" id="telefonoReactivacion">
+          </div>
+          <button class="btn-reactivate" onclick="reactivarCuenta()">
+            ✅ Reactivar Mi Cuenta Ahora
+          </button>
+        </div>
+
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 10px;">
+          <small>
+            🔒 <strong>Proceso seguro:</strong> Verificaremos tu identidad y reactivaremos tu cuenta en menos de 5
+            minutos
+          </small>
+        </div>
+      </div>
+
+      <div class="alternative-section">
+        <div class="alternative-title">🎯 Otras opciones disponibles</div>
+        <div class="alternative-options">
+          <div class="option-card" onclick="crearNuevaCuenta()">
+            <div class="option-icon">🆕</div>
+            <div class="option-title">Nueva Cuenta</div>
+            <div class="option-description">Crear una cuenta completamente nueva con tu email actual</div>
+          </div>
+          <div class="option-card" onclick="recuperarDatos()">
+            <div class="option-icon">💾</div>
+            <div class="option-title">Recuperar Datos</div>
+            <div class="option-description">Solicitar una copia de tu historial de compras y biblioteca</div>
+          </div>
+          <div class="option-card" onclick="navegarSinCuenta()">
+            <div class="option-icon">👀</div>
+            <div class="option-title">Navegar sin Cuenta</div>
+            <div class="option-description">Explora nuestro catálogo sin necesidad de registrarte</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-section">
+        <h3 style="margin-bottom: 1rem; text-align: center;">🤝 ¿Necesitas ayuda personalizada?</h3>
+        <p style="text-align: center; margin-bottom: 1.5rem;">
+          Nuestro equipo de soporte está disponible 24/7 para ayudarte con la reactivación
+        </p>
+
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div><strong>Email</strong></div>
+            <div>soporte@libronet.com</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div><strong>Teléfono</strong></div>
+            <div>+54 381 123-4567</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <div><strong>Chat en Vivo</strong></div>
+            <div>Disponible en nuestro sitio</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 15px; text-align: center;">
+        <h4 style="color: #333; margin-bottom: 1rem;">📚 ¿Sabías que...?</h4>
+        <p style="color: #666; margin-bottom: 1rem;">
+          Durante tu ausencia, hemos agregado más de 5,000 nuevos títulos a nuestro catálogo, incluyendo bestsellers y
+          lanzamientos exclusivos.
+        </p>
+        <button class="btn-secondary" onclick="verNovedades()" style="border: 1px solid #667eea; color: #667eea;">
+          🌟 Ver Novedades
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>LibroNet</h4>
+        <p>Tu librería online de confianza. Comprometidos con el medio ambiente y la accesibilidad al conocimiento.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces Rápidos</h4>
+        <p><a href="#catalogo">Catálogo</a></p>
+        <p><a href="#">Ofertas</a></p>
+        <p><a href="#">Nuevos Lanzamientos</a></p>
+        <p><a href="#">Contacto</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Atención al Cliente</h4>
+        <p><a href="#">Preguntas Frecuentes</a></p>
+        <p><a href="#">Política de Devoluciones</a></p>
+        <p><a href="#">Envíos</a></p>
+        <p><a href="#">Soporte</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Síguenos</h4>
+        <p><a href="#">Facebook</a></p>
+        <p><a href="#">Twitter</a></p>
+        <p><a href="#">Instagram</a></p>
+        <p><a href="#">Newsletter</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 LibroNet. Todos los derechos reservados. | Compromiso con el medio ambiente - 50% menos papel.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Función para reactivar cuenta
+    function reactivarCuenta() {
+      const email = document.getElementById('emailReactivacion').value;
+      const telefono = document.getElementById('telefonoReactivacion').value;
+
+      if (!email || !telefono) {
+        alert('⚠️ Por favor completa todos los campos para proceder con la reactivación.');
+        return;
+      }
+
+      // Validar email básico
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('⚠️ Por favor ingresa un email válido.');
+        return;
+      }
+
+      // Simular proceso de reactivación
+      const btn = document.querySelector('.btn-reactivate');
+      btn.innerHTML = '⏳ Verificando datos...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = '✅ Enviando código de verificación...';
+      }, 1500);
+
+      setTimeout(() => {
+        alert('📧 ¡Perfecto! Hemos enviado un código de verificación a tu email.\n\nRevisa tu bandeja de entrada (y spam) y sigue las instrucciones para completar la reactivación.\n\n🔒 Por seguridad, el código expira en 15 minutos.');
+
+        // Simular redirección a página de verificación
+        setTimeout(() => {
+          alert('🔄 Redirigiendo a la página de verificación...');
+          // window.location.href = 'verificacion.html';
+        }, 2000);
+      }, 3000);
+    }
+
+    // Función para crear nueva cuenta
+    function crearNuevaCuenta() {
+      if (confirm('🆕 ¿Estás seguro de que quieres crear una nueva cuenta?\n\nPerderás tu historial de compras anterior, pero podrás empezar fresh con todas las nuevas funcionalidades.')) {
+        alert('✨ Te redirigiremos al formulario de registro.\n\n¡Bienvenido de vuelta a LibroNet!');
+        window.location.href = "./register.html";
+      }
+    }
+
+    // Función para recuperar datos
+    function recuperarDatos() {
+      alert('💾 Solicitud de recuperación de datos enviada.\n\nRecibirás un email con:\n• Tu historial de compras\n• Lista de libros favoritos\n• Preferencias de cuenta\n\n📧 El archivo llegará en las próximas 24-48 horas.');
+    }
+
+    // Función para navegar sin cuenta
+    function navegarSinCuenta() {
+      if (confirm('👀 ¿Quieres explorar nuestro catálogo sin registrarte?\n\nPodrás ver todos los libros, pero necesitarás una cuenta para comprar.')) {
+        alert('🚀 ¡Perfecto! Te llevamos a nuestro catálogo completo.');
+        window.location.href = '../index.html#catalogo';
+      }
+    }
+
+    // Función para ver novedades
+    function verNovedades() {
+      alert('🌟 ¡Genial! Te mostraremos todos los nuevos títulos que agregamos.\n\nIncluye:\n• Bestsellers 2024-2025\n• Lanzamientos exclusivos\n• Autores emergentes\n• Colecciones especiales');
+      // window.location.href = 'novedades.html';
+    }
+
+    // Animación de entrada escalonada
+    window.addEventListener('load', function () {
+      const elements = document.querySelectorAll('.info-section, .reactivation-section, .alternative-section, .contact-section');
+      elements.forEach((el, index) => {
+        el.style.setProperty('--delay', `${0.7 + (index * 0.2)}s`);
+        el.classList.add('fade-in-delay');
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -154,19 +154,10 @@
 
             // Simulate API call delay
             setTimeout(() => {
-                // Here you would normally make an API call to authenticate
-                // For demo purposes, we'll simulate a successful login
-
-                if (usuario === 'demo' && password === 'demo123') {
-                    showSuccess('¡Inicio de sesión exitoso! Redirigiendo...');
-                    setTimeout(() => {
-                        window.location.href = 'Libreria.html';
-                    }, 2000);
-                } else {
-                    showError('Usuario o contraseña incorrectos. (Prueba: demo / demo123)');
-                    loginBtn.disabled = false;
-                    loginBtn.textContent = 'Iniciar Sesión';
-                }
+                showSuccess('Cuenta suspendida. Redirigiendo...');
+                setTimeout(() => {
+                    window.location.href = 'suspended.html';
+                }, 2000);
             }, 1500);
         });
 

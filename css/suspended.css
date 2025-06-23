@@ -1,0 +1,359 @@
+    /* Estilos específicos para la página de cuenta suspendida */
+    body {
+      padding-top: 100px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .suspension-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    .suspension-card {
+      background: white;
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: slideUp 0.6s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .suspension-icon {
+      font-size: 5rem;
+      margin-bottom: 1.5rem;
+      animation: swing 2s ease-in-out infinite;
+      color: #ffc107;
+    }
+
+    @keyframes swing {
+
+      0%,
+      100% {
+        transform: rotate(0deg);
+      }
+
+      20% {
+        transform: rotate(-10deg);
+      }
+
+      40% {
+        transform: rotate(10deg);
+      }
+
+      60% {
+        transform: rotate(-5deg);
+      }
+
+      80% {
+        transform: rotate(5deg);
+      }
+    }
+
+    .suspension-title {
+      font-size: 2.2rem;
+      color: #dc3545;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      animation: fadeIn 0.8s ease-out 0.3s both;
+    }
+
+    .suspension-subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 2rem;
+      animation: fadeIn 0.8s ease-out 0.5s both;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .info-section {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: left;
+      animation: fadeIn 0.8s ease-out 0.7s both;
+    }
+
+    .info-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #856404;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-list li {
+      padding: 0.5rem 0;
+      color: #856404;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .info-list li::before {
+      content: "⚠️";
+      flex-shrink: 0;
+    }
+
+    .reactivation-section {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem 0;
+      animation: fadeIn 0.8s ease-out 0.9s both;
+    }
+
+    .reactivation-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .reactivation-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .reactivation-form {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .form-group-inline {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-input-white {
+      background: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      color: #333;
+      flex: 1;
+    }
+
+    .form-input-white::placeholder {
+      color: #999;
+    }
+
+    .btn-reactivate {
+      background: white;
+      color: #28a745;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .btn-reactivate:hover {
+      background: #f8f9fa;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .alternative-section {
+      background: #f8f9fa;
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem 0;
+      animation: fadeIn 0.8s ease-out 1.1s both;
+    }
+
+    .alternative-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .alternative-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .option-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .option-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .option-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .option-title {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .option-description {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .contact-section {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem 0;
+      animation: fadeIn 0.8s ease-out 1.3s both;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-item {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .contact-item-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timer-section {
+      background: #e7f3ff;
+      border: 1px solid #b3d9ff;
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      text-align: center;
+      animation: fadeIn 0.8s ease-out 1.5s both;
+    }
+
+    .timer-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      animation: tick 1s infinite;
+    }
+
+    @keyframes tick {
+
+      0%,
+      50% {
+        transform: rotate(0deg);
+      }
+
+      25% {
+        transform: rotate(6deg);
+      }
+
+      75% {
+        transform: rotate(-6deg);
+      }
+    }
+
+    .timer-text {
+      color: #0066cc;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .timer-subtext {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .suspension-card {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+      }
+
+      .suspension-title {
+        font-size: 1.8rem;
+      }
+
+      .form-group-inline {
+        flex-direction: column;
+      }
+
+      .alternative-options {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fade-in-delay {
+      animation: fadeIn 0.8s ease-out var(--delay) both;
+    }
