@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compra Exitosa - LibroNet</title>
+  <link rel="stylesheet" href="../css/general.css">
+  <link rel="stylesheet" href="../css/successful.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">LibroNet</div>
+      <div class="nav-buttons">
+        <span style="color: white; margin-right: 1rem;">¡Gracias por tu compra!</span>
+        <a href="../index.html" class="btn btn-primary">Inicio</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Confetti Animation -->
+  <div class="confetti" style="left: 10%;"></div>
+  <div class="confetti" style="left: 20%;"></div>
+  <div class="confetti" style="left: 30%;"></div>
+  <div class="confetti" style="left: 40%;"></div>
+  <div class="confetti" style="left: 60%;"></div>
+  <div class="confetti" style="left: 70%;"></div>
+  <div class="confetti" style="left: 80%;"></div>
+  <div class="confetti" style="left: 90%;"></div>
+
+  <!-- Contenido principal -->
+  <div class="success-container">
+    <div class="success-card">
+      <div class="success-icon">🎉</div>
+      <h1 class="success-title">¡Compra Exitosa!</h1>
+      <p class="success-subtitle">Tu pedido ha sido procesado correctamente</p>
+
+      <div class="order-details">
+        <div class="order-number">📋 Pedido #LN-2024-001234</div>
+
+        <div class="purchase-summary">
+          <div class="summary-title">🛒 Resumen de tu compra</div>
+          <div class="summary-item">
+            <span>Cien Años de Soledad (x1)</span>
+            <span>$15.99</span>
+          </div>
+          <div class="summary-item">
+            <span>1984 (x2)</span>
+            <span>$25.00</span>
+          </div>
+          <div class="summary-item">
+            <span>Harry Potter y la Piedra Filosofal (x1)</span>
+            <span>$18.75</span>
+          </div>
+          <div class="summary-item">
+            <span>El Principito (x3)</span>
+            <span>$29.97</span>
+          </div>
+          <div class="summary-item">
+            <span>Total Pagado</span>
+            <span>$86.73</span>
+          </div>
+        </div>
+
+        <div class="order-info">
+          <div class="info-item">
+            <div class="info-icon">💳</div>
+            <div class="info-title">Método de Pago</div>
+            <div class="info-value">Visa terminada en ***1234</div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📅</div>
+            <div class="info-title">Fecha de Compra</div>
+            <div class="info-value">22 de Junio, 2025</div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📦</div>
+            <div class="info-title">Tiempo de Entrega</div>
+            <div class="info-value">3-5 días hábiles</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notification-section">
+        <div class="notification-icon">📧</div>
+        <h3>¡Te hemos enviado un email de confirmación!</h3>
+        <p style="margin: 1rem 0;">
+          Revisa tu bandeja de entrada para ver todos los detalles de tu pedido.
+          También te notificaremos cuando tu envío salga de nuestro almacén.
+        </p>
+        <div style="background: rgba(255, 255, 255, 0.2); padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+          <p style="margin: 0; font-size: 0.9rem;">
+            🚚 <strong>Seguimiento automático:</strong> Recibirás actualizaciones por email y SMS sobre el estado de tu
+            envío
+          </p>
+        </div>
+      </div>
+
+      <div class="buttons-section">
+        <a href="#" class="btn-success" onclick="descargarRecibo()">📄 Descargar Recibo</a>
+        <a href="../index.html" class="btn-secondary">🏠 Volver al Inicio</a>
+        <a href="#" class="btn-secondary" onclick="seguirPedido()">📍 Seguir mi Pedido</a>
+      </div>
+
+      <div style="margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 15px;">
+        <h4 style="color: #333; margin-bottom: 1rem;">🌟 ¿Te gustó tu experiencia?</h4>
+        <p style="color: #666; margin-bottom: 1rem;">
+          Nos encantaría conocer tu opinión. Tu feedback nos ayuda a mejorar.
+        </p>
+        <button class="btn-secondary" onclick="dejarResena()" style="border: 1px solid #28a745; color: #28a745;">
+          ⭐ Dejar una Reseña
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>LibroNet</h4>
+        <p>Tu librería online de confianza. Comprometidos con el medio ambiente y la accesibilidad al conocimiento.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces Rápidos</h4>
+        <p><a href="#catalogo">Catálogo</a></p>
+        <p><a href="#">Ofertas</a></p>
+        <p><a href="#">Nuevos Lanzamientos</a></p>
+        <p><a href="#">Contacto</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Atención al Cliente</h4>
+        <p><a href="#">Preguntas Frecuentes</a></p>
+        <p><a href="#">Política de Devoluciones</a></p>
+        <p><a href="#">Envíos</a></p>
+        <p><a href="#">Soporte</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Síguenos</h4>
+        <p><a href="#">Facebook</a></p>
+        <p><a href="#">Twitter</a></p>
+        <p><a href="#">Instagram</a></p>
+        <p><a href="#">Newsletter</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 LibroNet. Todos los derechos reservados. | Compromiso con el medio ambiente - 50% menos papel.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Función para descargar recibo
+    function descargarRecibo() {
+      alert('📄 Tu recibo se está descargando...\n\nSe guardará en tu carpeta de descargas como "Recibo_LibroNet_LN-2024-001234.pdf"');
+      // Aquí iría la lógica real para generar y descargar el PDF
+    }
+
+    // Función para seguir pedido
+    function seguirPedido() {
+      alert('📍 Redirigiendo a la página de seguimiento...\n\nPodrás ver el estado actual de tu envío en tiempo real.');
+      // Aquí iría la redirección a la página de seguimiento
+    }
+
+    // Función para dejar reseña
+    function dejarResena() {
+      alert('⭐ ¡Gracias por querer compartir tu experiencia!\n\nTe redirigiremos a la página de reseñas donde podrás calificar tu compra y ayudar a otros usuarios.');
+      // Aquí iría la redirección a la página de reseñas
+    }
+
+    // Animación adicional de confetti
+    function createConfetti() {
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.left = Math.random() * 100 + '%';
+          confetti.style.backgroundColor = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57'][Math.floor(Math.random() * 5)];
+          document.body.appendChild(confetti);
+
+          setTimeout(() => {
+            confetti.remove();
+          }, 3000);
+        }, i * 200);
+      }
+    }
+
+    // Ejecutar confetti adicional después de la carga
+    setTimeout(createConfetti, 1000);
+    setTimeout(createConfetti, 3000);
+  </script>
+</body>
+
+</html>
