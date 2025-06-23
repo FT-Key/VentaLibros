@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realizar Pago - LibroNet</title>
+  <link rel="stylesheet" href="../css/general.css">
+  <link rel="stylesheet" href="../css/payment.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">LibroNet</div>
+      <div class="nav-buttons">
+        <span style="color: white; margin-right: 1rem;">¡Bienvenido, Usuario!</span>
+        <a href="./cart.html" class="btn btn-outline">Volver al Carrito</a>
+        <a href="../index.html" class="btn btn-primary">Inicio</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="pago-container">
+    <div class="pago-header">
+      <h1>Finalizar Compra</h1>
+      <p>Completa tu información de pago para procesar tu pedido</p>
+    </div>
+
+    <div class="pago-content">
+      <!-- Formulario de pago -->
+      <div class="formulario-pago">
+        <h2>Información de Pago</h2>
+
+        <!-- Tarjetas guardadas -->
+        <div class="tarjetas-guardadas">
+          <h3>Seleccionar tarjeta guardada</h3>
+          <select class="select-tarjeta" id="tarjetasSelect" onchange="seleccionarTarjeta()">
+            <option value="">Seleccionar tarjeta...</option>
+            <option value="visa1234">Visa terminada en ***1234</option>
+            <option value="master5678">Mastercard terminada en ***5678</option>
+            <option value="nueva">+ Agregar nueva tarjeta</option>
+          </select>
+
+          <!-- Tarjeta seleccionada Visa -->
+          <div class="tarjeta-seleccionada" id="tarjetaVisa">
+            <div class="tarjeta-visual">
+              <div class="tarjeta-numero">**** **** **** 1234</div>
+              <div class="tarjeta-info">
+                <div class="tarjeta-titular">Juan Pérez</div>
+                <div class="tarjeta-vencimiento">12/26</div>
+              </div>
+            </div>
+            <div style="text-align: center;">
+              <strong>💳 VISA</strong>
+            </div>
+          </div>
+
+          <!-- Tarjeta seleccionada Mastercard -->
+          <div class="tarjeta-seleccionada" id="tarjetaMaster">
+            <div class="tarjeta-visual">
+              <div class="tarjeta-numero">**** **** **** 5678</div>
+              <div class="tarjeta-info">
+                <div class="tarjeta-titular">María González</div>
+                <div class="tarjeta-vencimiento">08/27</div>
+              </div>
+            </div>
+            <div style="text-align: center;">
+              <strong>💳 MASTERCARD</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nueva tarjeta -->
+        <div class="nueva-tarjeta" id="nuevaTarjeta">
+          <h3>Agregar nueva tarjeta</h3>
+
+          <div class="form-group">
+            <label class="form-label">Número de tarjeta</label>
+            <input type="text" class="form-input" id="numeroTarjeta" placeholder="1234 5678 9012 3456" maxlength="19">
+            <div class="card-icons">
+              <span class="card-icon">💳</span>
+              <span class="card-icon">🏧</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Nombre del titular</label>
+            <input type="text" class="form-input" id="nombreTitular" placeholder="Como aparece en la tarjeta">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Fecha de vencimiento</label>
+              <input type="text" class="form-input" id="fechaVencimiento" placeholder="MM/AA" maxlength="5">
+            </div>
+            <div class="form-group">
+              <label class="form-label">CVV</label>
+              <input type="text" class="form-input" id="cvv" placeholder="123" maxlength="4">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Dirección de facturación</label>
+            <input type="text" class="form-input" id="direccion" placeholder="Calle, número, ciudad">
+          </div>
+        </div>
+
+        <!-- Botón de pago -->
+        <button class="btn-pagar" id="btnPagar" onclick="procesarPago()" disabled>
+          🔒 Realizar Pago Seguro
+        </button>
+
+        <div class="seguridad-info">
+          <small>Tu información está protegida con encriptación SSL de 256 bits</small>
+        </div>
+      </div>
+
+      <!-- Resumen de compra -->
+      <div class="resumen-compra">
+        <h3>Resumen del Pedido</h3>
+
+        <div class="producto-resumen">
+          <span class="producto-nombre">Cien Años de Soledad</span>
+          <span class="producto-cantidad">x1</span>
+          <span class="producto-precio">$15.99</span>
+        </div>
+
+        <div class="producto-resumen">
+          <span class="producto-nombre">1984</span>
+          <span class="producto-cantidad">x2</span>
+          <span class="producto-precio">$25.00</span>
+        </div>
+
+        <div class="producto-resumen">
+          <span class="producto-nombre">Harry Potter y la Piedra Filosofal</span>
+          <span class="producto-cantidad">x1</span>
+          <span class="producto-precio">$18.75</span>
+        </div>
+
+        <div class="producto-resumen">
+          <span class="producto-nombre">El Principito</span>
+          <span class="producto-cantidad">x3</span>
+          <span class="producto-precio">$29.97</span>
+        </div>
+
+        <div class="resumen-totales">
+          <div class="total-linea">
+            <span>Subtotal:</span>
+            <span>$89.71</span>
+          </div>
+          <div class="total-linea">
+            <span>Envío:</span>
+            <span>$5.99</span>
+          </div>
+          <div class="total-linea">
+            <span>Descuento:</span>
+            <span style="color: #28a745;">-$8.97</span>
+          </div>
+          <div class="total-linea final">
+            <span>Total a pagar:</span>
+            <span>$86.73</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; padding: 1rem; background: #f8f9fa; border-radius: 10px; text-align: center;">
+          <small style="color: #666;">
+            📦 Envío estimado: 3-5 días hábiles<br>
+            ↩️ Devoluciones gratuitas en 30 días
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>LibroNet</h4>
+        <p>Tu librería online de confianza. Comprometidos con el medio ambiente y la accesibilidad al conocimiento.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces Rápidos</h4>
+        <p><a href="#catalogo">Catálogo</a></p>
+        <p><a href="#">Ofertas</a></p>
+        <p><a href="#">Nuevos Lanzamientos</a></p>
+        <p><a href="#">Contacto</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Atención al Cliente</h4>
+        <p><a href="#">Preguntas Frecuentes</a></p>
+        <p><a href="#">Política de Devoluciones</a></p>
+        <p><a href="#">Envíos</a></p>
+        <p><a href="#">Soporte</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Síguenos</h4>
+        <p><a href="#">Facebook</a></p>
+        <p><a href="#">Twitter</a></p>
+        <p><a href="#">Instagram</a></p>
+        <p><a href="#">Newsletter</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 LibroNet. Todos los derechos reservados. | Compromiso con el medio ambiente - 50% menos papel.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Función para seleccionar tarjeta
+    function seleccionarTarjeta() {
+      const select = document.getElementById('tarjetasSelect');
+      const tarjetaVisa = document.getElementById('tarjetaVisa');
+      const tarjetaMaster = document.getElementById('tarjetaMaster');
+      const nuevaTarjeta = document.getElementById('nuevaTarjeta');
+      const btnPagar = document.getElementById('btnPagar');
+
+      // Ocultar todas las opciones
+      tarjetaVisa.style.display = 'none';
+      tarjetaMaster.style.display = 'none';
+      nuevaTarjeta.classList.remove('active');
+
+      // Mostrar la opción seleccionada
+      switch (select.value) {
+        case 'visa1234':
+          tarjetaVisa.classList.add('show');
+          tarjetaVisa.style.display = 'block';
+          btnPagar.disabled = false;
+          break;
+        case 'master5678':
+          tarjetaMaster.classList.add('show');
+          tarjetaMaster.style.display = 'block';
+          btnPagar.disabled = false;
+          break;
+        case 'nueva':
+          nuevaTarjeta.classList.add('active');
+          validarFormularioNuevaTarjeta();
+          break;
+        default:
+          btnPagar.disabled = true;
+      }
+    }
+
+    // Formatear número de tarjeta
+    document.getElementById('numeroTarjeta').addEventListener('input', function (e) {
+      let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+      let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+      if (formattedValue.length > 19) formattedValue = formattedValue.substr(0, 19);
+      e.target.value = formattedValue;
+      validarFormularioNuevaTarjeta();
+    });
+
+    // Formatear fecha de vencimiento
+    document.getElementById('fechaVencimiento').addEventListener('input', function (e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length >= 2) {
+        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+      }
+      e.target.value = value;
+      validarFormularioNuevaTarjeta();
+    });
+
+    // Validar CVV (solo números)
+    document.getElementById('cvv').addEventListener('input', function (e) {
+      e.target.value = e.target.value.replace(/[^0-9]/g, '');
+      validarFormularioNuevaTarjeta();
+    });
+
+    // Validar otros campos
+    document.getElementById('nombreTitular').addEventListener('input', validarFormularioNuevaTarjeta);
+    document.getElementById('direccion').addEventListener('input', validarFormularioNuevaTarjeta);
+
+    // Función para validar formulario de nueva tarjeta
+    function validarFormularioNuevaTarjeta() {
+      const numeroTarjeta = document.getElementById('numeroTarjeta').value.replace(/\s/g, '');
+      const nombreTitular = document.getElementById('nombreTitular').value;
+      const fechaVencimiento = document.getElementById('fechaVencimiento').value;
+      const cvv = document.getElementById('cvv').value;
+      const direccion = document.getElementById('direccion').value;
+      const btnPagar = document.getElementById('btnPagar');
+
+      const esValido = numeroTarjeta.length === 16 &&
+        nombreTitular.length > 2 &&
+        fechaVencimiento.length === 5 &&
+        cvv.length >= 3 &&
+        direccion.length > 5;
+
+      btnPagar.disabled = !esValido;
+    }
+
+    // Función para procesar el pago
+    function procesarPago() {
+      const btnPagar = document.getElementById('btnPagar');
+
+      // Cambiar estado del botón
+      btnPagar.innerHTML = '⏳ Procesando pago...';
+      btnPagar.disabled = true;
+
+      // Simular procesamiento
+      setTimeout(() => {
+        // Mostrar mensaje de éxito
+        alert('¡Su pago se ha realizado con éxito! 🎉\n\nGracias por su compra. Recibirá un email de confirmación en breve.\n\nNúmero de pedido: #LN-2024-001234');
+
+        // Opcional: redirigir a página de confirmación
+        // window.location.href = 'confirmacion.html';
+
+        // Restaurar botón (en caso de que el usuario permanezca en la página)
+        btnPagar.innerHTML = '🔒 Realizar Pago Seguro';
+      }, 2000);
+    }
+  </script>
+</body>
+
+</html>

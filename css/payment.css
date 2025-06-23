@@ -1,0 +1,316 @@
+    /* Estilos específicos para la página de pago */
+    body {
+      padding-top: 80px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    .pago-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+      min-height: calc(100vh - 200px);
+    }
+
+    .pago-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .pago-header h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .pago-header p {
+      color: #666;
+      font-size: 1.1rem;
+    }
+
+    .pago-content {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 3rem;
+    }
+
+    .formulario-pago {
+      background: white;
+      border-radius: 15px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .formulario-pago h2 {
+      color: #333;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .formulario-pago h2::before {
+      content: "💳";
+      margin-right: 0.5rem;
+      font-size: 2rem;
+    }
+
+    .tarjetas-guardadas {
+      margin-bottom: 2rem;
+    }
+
+    .tarjetas-guardadas h3 {
+      color: #333;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .select-tarjeta {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      font-size: 1rem;
+      background: #f8f9fa;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .select-tarjeta:focus {
+      outline: none;
+      border-color: #667eea;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .tarjeta-seleccionada {
+      margin-top: 1rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 15px;
+      display: none;
+    }
+
+    .tarjeta-visual {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tarjeta-numero {
+      font-size: 1.3rem;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .tarjeta-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tarjeta-titular {
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .tarjeta-vencimiento {
+      font-size: 1rem;
+    }
+
+    .nueva-tarjeta {
+      margin-top: 2rem;
+      display: none;
+    }
+
+    .nueva-tarjeta.active {
+      display: block;
+    }
+
+    .nueva-tarjeta h3 {
+      color: #333;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-row.single {
+      grid-template-columns: 1fr;
+    }
+
+    .card-icons {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .card-icon {
+      font-size: 1.5rem;
+    }
+
+    .btn-pagar {
+      width: 100%;
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+      color: white;
+      padding: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 2rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-pagar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+    }
+
+    .btn-pagar:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .resumen-compra {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
+
+    .resumen-compra h3 {
+      color: #333;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .resumen-compra h3::before {
+      content: "🛒";
+      margin-right: 0.5rem;
+      font-size: 1.8rem;
+    }
+
+    .producto-resumen {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .producto-resumen:last-child {
+      border-bottom: none;
+    }
+
+    .producto-nombre {
+      flex: 1;
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    .producto-cantidad {
+      color: #666;
+      margin: 0 1rem;
+      font-size: 0.9rem;
+    }
+
+    .producto-precio {
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .resumen-totales {
+      border-top: 2px solid #f0f0f0;
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+
+    .total-linea {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+    }
+
+    .total-linea.final {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #333;
+      border-top: 1px solid #e9ecef;
+      padding-top: 0.8rem;
+    }
+
+    .seguridad-info {
+      background: #e8f5e8;
+      border: 1px solid #28a745;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    .seguridad-info::before {
+      content: "🛡️";
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .seguridad-info small {
+      color: #155724;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .pago-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .resumen-compra {
+        position: static;
+      }
+    }
+
+    /* Animaciones */
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .tarjeta-seleccionada.show {
+      display: block;
+      animation: slideIn 0.3s ease;
+    }
+
+    .nueva-tarjeta.active {
+      animation: slideIn 0.3s ease;
+    }
