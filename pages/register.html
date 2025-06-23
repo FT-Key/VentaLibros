@@ -162,6 +162,10 @@
         document.getElementById('usuario').addEventListener('input', function (e) {
             e.target.value = e.target.value.replace(/[^a-zA-Z0-9_]/g, '').substring(0, 20);
         });
+
+        function prepararParaCaptura() {
+            document.querySelector('.navbar').classList.add('fixed-navbar');
+        }
     </script>
 </body>
 
